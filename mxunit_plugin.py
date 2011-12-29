@@ -6,6 +6,8 @@ display the results in s Sublime way.
  
 import os
 import tempfile
+import json
+import datetime
 import ConfigParser
 from urllib2 import urlopen,HTTPError
 import sublime, sublime_plugin
@@ -57,7 +59,7 @@ class mxunit_command(sublime_plugin.TextCommand):
 			self._results = _res.read()
 			view.window().run_command("show_panel", {"panel": "output.tests"})
 			self.output_view = view.window().get_output_panel("tests")
-			self.output_view.insert(edit, self.output_view.size(), self._results)
+			self.output_view.insert( edit, self.output_view.size(), self.pretty_results(self._results) ) 
 
 		except HTTPError as e:
 			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s' % e)
@@ -70,6 +72,36 @@ class mxunit_command(sublime_plugin.TextCommand):
 		#return
 	
 
+
+	def pretty_results(self,test_results):
+		_results = '________________________________________________________\n\n'
+		_results += '    :::::::   MXUnit Test Results  :::::::     \n'
+		_results += '________________________________________________________\n\n'
+		_results += '  Date:  %s\n' % (datetime.datetime.now())
+		tests = json.loads(test_results)
+		passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
+		failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
+		errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
+		_results += '  Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
+		_results += '________________________________________________________\n'
+
+		#To Do: Calculate totals --total, errors, failures, time
+		#pprint( len(tests) )
+
+		for test in tests:
+			_results += '\n  %s.%s : status=%s\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
+			if( test['DEBUG'] ):
+				_debug = test['DEBUG']
+				i=0
+				for var in _debug:
+					# print '%s = %s' % ( var, _debug[i] )
+					_results += " >>Debug: %s\n\n" % (var) 
+				
+			_results += '\n|--------------------------------------------------------------------------------\n'
+		
+		_results += '\n________________________________________________________\n'
+		_results += 'Test results:  Passed=%s, Failed=%s, Errors=%s\n' % (passed,failed,errors)
+		return _results
 
 
 	def append(self, text, panel_name = 'example'):

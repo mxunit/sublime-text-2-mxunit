@@ -1,0 +1,17 @@
+[
+  { "caption": "-" },
+  {
+    "caption": "MXUnit",
+    "children":
+      [
+        { "caption": "Run tests", "command": "mxunit" },
+        { "caption": "Run all tests in directory", "command": "run_all_in_directory" },
+        { "caption": "Run last test(s)", "command": "run_last_test" },
+        { "caption": "-" },
+        { "caption": "Show test panel", "command": "show_test_panel" },
+        { "caption": "-" },
+        { "caption": "-" },
+        { "caption": "Switch Between Code and Test", "command": "switch_between_code_and_test" }
+      ]
+  }
+]
