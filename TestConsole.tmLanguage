@@ -10,6 +10,14 @@
   <array>
     <dict>
       <key>comment</key>
+      <string>test status</string>
+      <key>match</key>
+      <string>\d+ (status=Passed)</string>
+      <key>name</key>
+      <string>test.status</string>
+    </dict>
+    <dict>
+      <key>comment</key>
       <string>test pass</string>
       <key>match</key>
       <string>\d+ (tests|assertions|examples?)</string>
@@ -71,7 +79,7 @@
     </dict>
   </array>
   <key>scopeName</key>
-  <string>tests.ruby</string>
+  <string>tests.mxunit</string>
   <key>uuid</key>
   <string>72174d10-bb12-11e0-962b-112233445566</string>
 </dict>

@@ -8,9 +8,10 @@ import os
 import tempfile
 import json
 import datetime
+import re
 import ConfigParser
 from urllib2 import urlopen,HTTPError
-import sublime, sublime_plugin
+import sublime_plugin
 
 
 #To be specified by developer in a text file ... or can we prompt them here and 
@@ -103,7 +104,22 @@ class mxunit_command(sublime_plugin.TextCommand):
 		_results += 'Test results:  Passed=%s, Failed=%s, Errors=%s\n' % (passed,failed,errors)
 		return _results
 
+	
 
+
+	def parse_line(self,line):
+		pattern = re.compile("""
+			(private|package|remote|public)*[ ]*
+			(any|string|array|numeric|boolean|component|struct|void)*[ ]*
+			function[ ]+([a-z][a-z0-9_\-]+)
+			""", 
+			re.VERBOSE|re.MULTILINE|re.IGNORECASE)
+		m = pattern.match(line)
+		#return the 4th gouped regex, which should be the function name
+		return m.group(3)
+
+
+	
 	def append(self, text, panel_name = 'example'):
 		_view = self.view.window().get_output_panel(panel_name)
 		_view.run_command("show_panel", {"panel": "output." + panel_name})	
