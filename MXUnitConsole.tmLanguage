@@ -11,16 +11,62 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>comment</key>
-			<string>Finds the string Passed.</string>
+			<key>match</key>
+			<string>:::::::   MXUnit Test Results  :::::::</string>
+			<key>name</key>
+			<string>title</string>
+		</dict>
+		<dict>
 			<key>match</key>
 			<string>Passed</string>
 			<key>name</key>
-			<string>source.mxunit</string>
+			<string>passed</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>Failed</string>
+			<key>name</key>
+			<string>failed</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>Errors</string>
+			<key>name</key>
+			<string>errors</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>_</string>
+			<key>name</key>
+			<string>underscore</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\-</string>
+			<key>name</key>
+			<string>dash</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>&gt;&gt;Debug:</string>
+			<key>name</key>
+			<string>debug</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>Date:</string>
+			<key>name</key>
+			<string>date</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>status=</string>
+			<key>name</key>
+			<string>status_eq</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
-	<string>source.mxunit</string>
+	<string>mxunit.testresults</string>
 	<key>uuid</key>
 	<string>e478d7a9-c6e7-445a-b9db-f1b714dbfbc5</string>
 </dict>

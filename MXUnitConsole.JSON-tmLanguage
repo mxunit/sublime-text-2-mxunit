@@ -1,12 +1,36 @@
 { "name": "MXUnit Test Results",
-  "scopeName": "source.mxunit", 
+  "scopeName": "mxunit.testresults", 
   "fileTypes": ["text"], 
   "patterns": [
   	
-  	{ "match": "Passed",
-  		"name": "source.mxunit",
-  		"comment": "Finds the string Passed."
-	}
+  	{ "match": ":::::::   MXUnit Test Results  :::::::",
+      "name": "title"
+    },
+    { "match": "Passed",
+  		"name": "passed"
+	  },
+    { "match": "Failed",
+      "name": "failed"
+    },
+    { "match": "Errors",
+      "name": "errors"
+    },
+    { "match": "_",
+      "name": "underscore"
+    },
+    { "match": "\\-",
+      "name": "dash"
+    },
+    { "match": ">>Debug:",
+      "name": "debug"
+    },
+    { "match": "Date:",
+      "name": "date"
+    },
+    { "match": "status=",
+      "name": "status_eq"
+    }
+
   ],
   "uuid": "e478d7a9-c6e7-445a-b9db-f1b714dbfbc5"
 }

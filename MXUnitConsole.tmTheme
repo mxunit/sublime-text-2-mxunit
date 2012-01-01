@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>MXUnitConsoleTheme</string>
+  <key>settings</key>
+  <array>
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key>
+        <string>#000000</string>
+        <key>caret</key>
+        <string>#A7A7A7</string>
+        <key>foreground</key>
+        <string>#F8F8F8</string>
+        <key>invisibles</key>
+        <string>#CAE2FB3D</string>
+        <key>lineHighlight</key>
+        <string>#FFFFFF0D</string>
+        <key>selection</key>
+        <string>#DDF0FF33</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>passed</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#00FF00</string>
+      </dict>
+    </dict>
+
+
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>errors</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#FF0000</string>
+      </dict>
+    </dict>
+
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>failed</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#221199</string>
+      </dict>
+    </dict>
+
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>underscore</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#884400</string>
+      </dict>
+     </dict> 
+
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>title</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#009900</string>
+      </dict>
+     </dict>
+
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>dash</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#eaeaea</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>debug</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#ffff77</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>status_eq</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#aabbff</string>
+      </dict>
+     </dict>
+
+  </array>
+  <key>uuid</key>
+  <string>e478d7a9-c6e7-445a-b9db-f1b714dbead9</string>
+</dict>
+</plist>
