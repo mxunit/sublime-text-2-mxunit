@@ -15,8 +15,6 @@ _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
   - MXUnit > Run test on line
   - MXUnit > Run last test
 
-### Features
-
 
 ### Installation
 
@@ -50,6 +48,13 @@ _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
 	The ```component_root``` is how the web server sees your application. Above assumed all apps are visible from
 	http://localhost:8301/  and all files are stored in the  ```web_root``` directory.
 
+
+
+### Docs and Bugs
+
+  https://github.com/virtix/sublime-text-2-mxunit/wiki
+  
+  https://github.com/virtix/sublime-text-2-mxunit/issues
 
 
 ### To Do
