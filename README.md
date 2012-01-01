@@ -9,21 +9,25 @@ _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
 
 Open an MXUnit testcase in Sublime Text 2 and then:
 
-(Using Sublime's Command Pallette)
+__(Using Sublime's Command Pallette)__
+
  - Hit ```shift+ctrl+p``` (Command pallette)
  - Type ```mx``` to see list of available commands
  - Select [ ```Run tests``` | ```Run test on line``` | ```Run last test``` ]
- (More to come!)
+ - (More to come!)
 
 
-Or (Using keyboard shortcuts)
+![MXUnit Sublime Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/MXUnit-Sublime-Text-Command_Window.png)
+
+
+__Or (Using keyboard shortcuts)__
 
  - To run all tests for an MXUnit testcase hit ```alt+r```
  - To run a single test, move your cursor to the test function and hit ```shift+alt+r```
  - To re-run last test  hit ```ctrl+alt+r```
 
 
-Or (Using mouse clicks)
+__Or (Using mouse clicks)__
 
   - Right-click on a testcase and select: 
   - MXUnit > [Run tests | Run test on line | Run last test]
