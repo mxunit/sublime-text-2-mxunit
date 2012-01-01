@@ -1,11 +1,12 @@
-## MXUnit Test Runner Plugin for Sublimetext
+## MXUnit Test Runner Plugin for [Sublime Text 2](http://www.sublimetext.com/)
 
 ### Description
-A plugin for Sublimetext 2 that runs MXUnit tests.
+A plugin for Sublime Text 2 that runs MXUnit tests.
 
 _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
 
 ### How it works
+ - Open an MXUnit testcase in Sublime Text 2
  - To run all tests for an MXUnit testcase hit ```alt+r```
  - To run a single test, move your cursor to the test function and hit ```shift+alt+r```
  - To re-run last test  hit ```ctrl+alt+r```
@@ -52,15 +53,17 @@ _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
 
 ### Docs and Bugs
 
-  https://github.com/virtix/sublime-text-2-mxunit/wiki
+ - https://github.com/virtix/sublime-text-2-mxunit/wiki
   
-  https://github.com/virtix/sublime-text-2-mxunit/issues
+ - https://github.com/virtix/sublime-text-2-mxunit/issues
 
 
 ### To Do
 Lots!
 
-References:
+
+###References
+
  - Sublimetext 2 API - http://www.sublimetext.com/docs/2/api_reference.html
  - How to create a plugin: http://net.tutsplus.com/tutorials/python-tutorials/how-to-create-a-sublime-text-2-plugin/
  - Unoffical (but very good) docs - http://sublimetext.info/docs/en/

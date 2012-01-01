@@ -1,5 +1,5 @@
 [
 	{"keys": ["alt+r"], "command": "mxunit"},
 	{"keys": ["shift+alt+r"], "command": "single_test"},
-	{"keys": ["CTRL+alt+r"], "command": "run_last_test"}
+	{"keys": ["ctrl+alt+r"], "command": "run_last_test"}
 ]

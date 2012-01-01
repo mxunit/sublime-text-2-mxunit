@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.1",
+  "schema_version": "1.0",
   "repositories": [
     "https://github.com/virtix/sublime-text-2-mxunit"
   ],
