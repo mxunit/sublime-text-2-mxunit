@@ -10,7 +10,7 @@
         { "caption": "Run last test", "command": "run_last_test" },
         { "caption": "Run test(s) - show failures only", "command": "run_last_test" },
         { "caption": "-" },
-        { "caption": "Show quick pannel", "command": "show_qp" },
+        { "caption": "Show quick panel", "command": "show_qp" },
         { "caption": "-" },
         { "caption": "Show test panel", "command": "show_test_panel" },
         { "caption": "-" },
