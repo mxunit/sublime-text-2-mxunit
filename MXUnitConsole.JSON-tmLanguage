@@ -1,0 +1,12 @@
+{ "name": "MXUnit Test Results",
+  "scopeName": "source.mxunit", 
+  "fileTypes": ["text"], 
+  "patterns": [
+  	
+  	{ "match": "Passed",
+  		"name": "source.mxunit",
+  		"comment": "Finds the string Passed."
+	}
+  ],
+  "uuid": "e478d7a9-c6e7-445a-b9db-f1b714dbfbc5"
+}

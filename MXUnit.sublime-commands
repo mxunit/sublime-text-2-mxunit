@@ -1,0 +1,16 @@
+/**
+	These should be similar to (if not the same as) Context.sublime-menu
+
+*/
+
+[
+        { "caption": "MXUnit: Run tests", "command": "mxunit" },
+        { "caption": "MXUnit: Run test on line", "command": "single_test" },
+        { "caption": "MXUnit: Run all tests in directory", "command": "run_all_in_directory" },
+        { "caption": "MXUnit: Run last test", "command": "run_last_test" },
+        { "caption": "MXUnit: Run test(s) - show failures only", "command": "run_last_test" },
+        { "caption": "-" },
+        { "caption": "MXUnit: Show quick panel", "command": "show_qp" },
+        { "caption": "-" },
+        { "caption": "MXUnit: Show test panel", "command": "show_test_panel" }
+]

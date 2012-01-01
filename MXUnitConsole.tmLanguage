@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>text</string>
+	</array>
+	<key>name</key>
+	<string>MXUnit Test Results</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Finds the string Passed.</string>
+			<key>match</key>
+			<string>Passed</string>
+			<key>name</key>
+			<string>source.mxunit</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.mxunit</string>
+	<key>uuid</key>
+	<string>e478d7a9-c6e7-445a-b9db-f1b714dbfbc5</string>
+</dict>
+</plist>

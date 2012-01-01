@@ -6,12 +6,27 @@ A plugin for Sublime Text 2 that runs MXUnit tests.
 _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
 
 ### How it works
- - Open an MXUnit testcase in Sublime Text 2
+
+Open an MXUnit testcase in Sublime Text 2 and then:
+
+(Using Sublime's Command Pallette)
+ - Hit ```shift+ctrl+p``` (Command pallette)
+ - Type ```mx``` to see list of available commands
+ - Select [ ```Run tests``` | ```Run test on line``` | ```Run last test``` ]
+ (More to come!)
+
+
+Or (Using keyboard shortcuts)
+
  - To run all tests for an MXUnit testcase hit ```alt+r```
  - To run a single test, move your cursor to the test function and hit ```shift+alt+r```
  - To re-run last test  hit ```ctrl+alt+r```
 
- Alternatively, you can right-click on a testcase and select: MXUnit > [Run tests | Run test on line | Run last test]
+
+Or (Using mouse clicks)
+
+  - Right-click on a testcase and select: 
+  - MXUnit > [Run tests | Run test on line | Run last test]
 
 
 ### Installation
