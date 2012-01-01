@@ -11,10 +11,7 @@ _As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
  - To run a single test, move your cursor to the test function and hit ```shift+alt+r```
  - To re-run last test  hit ```ctrl+alt+r```
 
- Alternatively, you can right-click on a textcase and select 
-  - MXUnit > Run tests
-  - MXUnit > Run test on line
-  - MXUnit > Run last test
+ Alternatively, you can right-click on a testcase and select: MXUnit > [Run tests | Run test on line | Run last test]
 
 
 ### Installation
