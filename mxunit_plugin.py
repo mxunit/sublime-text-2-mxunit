@@ -130,21 +130,21 @@ class SingleTestCommand(BaseCommand):
 
 def pretty_results(test_results):
 	_results = '__________________________________________________________________________\n\n'
-	_results += '    			:::::::   MXUnit Test Results  :::::::     \n'
-	_results += '__________________________________________________________________________\n\n'
+	_results += '		:::::::   MXUnit Test Results  :::::::     \n\n'
+	#_results += '__________________________________________________________________________\n\n'
 	tests = json.loads(test_results)
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
-	_results += '  Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
-	_results += '  Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
+	_results += '		Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
+	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
 	_results += '__________________________________________________________________________\n\n'
 
 	#To Do: Calculate totals --total, errors, failures, time
 	#pprint( len(tests) )
 
 	for test in tests:
-		_results += '\n  %s.%s : status=%s\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
+		_results += '\n  %s.%s (%s)\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0

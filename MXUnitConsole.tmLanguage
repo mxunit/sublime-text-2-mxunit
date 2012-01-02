@@ -36,7 +36,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>_</string>
+			<string>_{5,}</string>
 			<key>name</key>
 			<string>underscore</string>
 		</dict>

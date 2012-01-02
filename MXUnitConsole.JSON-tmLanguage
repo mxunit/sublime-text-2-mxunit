@@ -15,7 +15,7 @@
     { "match": "Errors",
       "name": "errors"
     },
-    { "match": "_",
+    { "match": "_{5,}",
       "name": "underscore"
     },
     { "match": "\\|\\-+$",
