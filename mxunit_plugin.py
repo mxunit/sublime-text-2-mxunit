@@ -129,16 +129,16 @@ class SingleTestCommand(BaseCommand):
 #########################################################################################
 
 def pretty_results(test_results):
-	_results = '________________________________________________________\n\n'
-	_results += '    :::::::   MXUnit Test Results  :::::::     \n'
-	_results += '________________________________________________________\n\n'
-	_results += '  Date:  %s\n' % (datetime.datetime.now())
+	_results = '__________________________________________________________________________\n\n'
+	_results += '    			:::::::   MXUnit Test Results  :::::::     \n'
+	_results += '__________________________________________________________________________\n\n'
 	tests = json.loads(test_results)
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
 	_results += '  Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
-	_results += '________________________________________________________\n'
+	_results += '  Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
+	_results += '__________________________________________________________________________\n\n'
 
 	#To Do: Calculate totals --total, errors, failures, time
 	#pprint( len(tests) )
@@ -150,11 +150,11 @@ def pretty_results(test_results):
 			i=0
 			for var in _debug:
 				# print '%s = %s' % ( var, _debug[i] )
-				_results += " >>Debug: %s\n\n" % (var) 
+				_results += "  >>Debug: %s\n" % (var) 
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	
-	_results += '\n________________________________________________________\n'
+	_results += '\n________________________________________________________\n\n'
 	_results += 'Test results:  Passed=%s, Failed=%s, Errors=%s\n' % (passed,failed,errors)
 	return _results
 

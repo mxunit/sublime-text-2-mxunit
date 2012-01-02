@@ -42,21 +42,21 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\-</string>
+			<string>\|\-+$</string>
 			<key>name</key>
 			<string>dash</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>&gt;&gt;Debug:</string>
+			<string>&gt;&gt;Debug:.*$</string>
 			<key>name</key>
 			<string>debug</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>Date:</string>
+			<string>Date:.*$</string>
 			<key>name</key>
-			<string>date</string>
+			<string>current_date</string>
 		</dict>
 		<dict>
 			<key>match</key>

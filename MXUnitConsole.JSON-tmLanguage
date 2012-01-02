@@ -18,14 +18,14 @@
     { "match": "_",
       "name": "underscore"
     },
-    { "match": "\\-",
+    { "match": "\\|\\-+$",
       "name": "dash"
     },
-    { "match": ">>Debug:",
+    { "match": ">>Debug:.*$",
       "name": "debug"
     },
-    { "match": "Date:",
-      "name": "date"
+    { "match": "Date:.*$",
+      "name": "current_date"
     },
     { "match": "status=",
       "name": "status_eq"

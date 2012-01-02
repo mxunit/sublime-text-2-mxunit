@@ -56,7 +56,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#221199</string>
+        <string>#0066ff</string>
       </dict>
     </dict>
 
@@ -92,7 +92,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#eaeaea</string>
+        <string>#009999</string>
       </dict>
      </dict>
 
@@ -104,7 +104,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#ffff77</string>
+        <string>#ccaa00</string>
       </dict>
      </dict>
 
@@ -116,7 +116,19 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#aabbff</string>
+        <string>#00bbff</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>current_date</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#009999</string>
       </dict>
      </dict>
 
