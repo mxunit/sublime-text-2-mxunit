@@ -6,6 +6,10 @@
 	<array>
 		<string>text</string>
 	</array>
+	<key>foldingStartMarker</key>
+	<string>&gt;&gt;</string>
+	<key>foldingStopMarker</key>
+	<string>&lt;&lt;</string>
 	<key>name</key>
 	<string>MXUnit Test Results</string>
 	<key>patterns</key>
@@ -48,9 +52,34 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>&gt;&gt;Debug:.*$</string>
+			<string>Debug:.*$</string>
 			<key>name</key>
 			<string>debug</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>&gt;&gt;Debug:</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>debug.data</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>&lt;&lt;</string>
+			<key>name</key>
+			<string>debug.wrapper</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>.*</string>
+					<key>name</key>
+					<string>debug</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>match</key>

@@ -1,6 +1,8 @@
 { "name": "MXUnit Test Results",
   "scopeName": "mxunit.testresults", 
   "fileTypes": ["text"], 
+  "foldingStartMarker": ">>",
+  "foldingStopMarker": "<<",
   "patterns": [
   	
   	{ "match": ":::::::   MXUnit Test Results  :::::::",
@@ -21,9 +23,24 @@
     { "match": "\\|\\-+$",
       "name": "dash"
     },
-    { "match": ">>Debug:.*$",
+    { "match": "Debug:.*$",
       "name": "debug"
     },
+
+    { "name": "debug.wrapper",
+      "begin": ">>Debug:",
+      "beginCaptures": {
+        "1": { "name": "debug.data" }
+        },
+      "patterns":
+        [
+           { "name": "debug",
+            "match": ".*"}
+        ],
+      "end": "<<"
+      },
+
+
     { "match": "Date:.*$",
       "name": "current_date"
     },

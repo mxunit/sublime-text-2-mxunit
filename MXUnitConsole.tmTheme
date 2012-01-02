@@ -10,7 +10,7 @@
       <key>settings</key>
       <dict>
         <key>background</key>
-        <string>#000000</string>
+        <string>#112233</string>
         <key>caret</key>
         <string>#A7A7A7</string>
         <key>foreground</key>
@@ -24,8 +24,8 @@
       </dict>
     </dict>
     <dict>
-      <key>name</key>
-      <string>Test</string>
+      <!-- <key>name</key>
+      <string>Test</string> -->
       <key>scope</key>
       <string>passed</string>
       <key>settings</key>
@@ -92,7 +92,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#009999</string>
+        <string>#353535</string>
       </dict>
      </dict>
 
@@ -104,7 +104,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#ccaa00</string>
+        <string>#Bf8B30</string>
       </dict>
      </dict>
 

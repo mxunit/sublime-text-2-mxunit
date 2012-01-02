@@ -54,6 +54,18 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self.output_view = self.view.window().get_output_panel("tests")
 			#self.show_tests_panel()
 			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results) ) 
+
+			# print self.output_view.viewport_extent()
+			_debug_regions = self.output_view.find_all('>>Debug:.*<<$')
+
+			print _debug_regions
+			# self.output_view.fold(_debug_regions)
+			# mark = [s for s in _debug_regions]
+			# self.output_view.add_regions("mark", mark, "debug", "bookmark") 
+											# sublime.HIDDEN | sublime.PERSISTENT)
+			# self.output_view.fold(_debug_regions)
+
+
 		except HTTPError as e:
 			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s' % e)
 
@@ -129,7 +141,7 @@ class SingleTestCommand(BaseCommand):
 #########################################################################################
 
 def pretty_results(test_results):
-	_results = '__________________________________________________________________________\n\n'
+	_results = '__________________________________________________________________________________\n\n'
 	_results += '		:::::::   MXUnit Test Results  :::::::     \n\n'
 	#_results += '__________________________________________________________________________\n\n'
 	tests = json.loads(test_results)
@@ -138,27 +150,30 @@ def pretty_results(test_results):
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
 	_results += '		Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
 	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
-	_results += '__________________________________________________________________________\n\n'
+	_results += '__________________________________________________________________________________\n\n'
 
 	#To Do: Calculate totals --total, errors, failures, time
 	#pprint( len(tests) )
 
 	for test in tests:
-		_results += '\n  %s.%s (%s)\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
+		_results += '	%s.%s (%s)\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
 				# print '%s = %s' % ( var, _debug[i] )
-				_results += "  >>Debug: %s\n" % (var) 
+				_results += "		Debug: %s \n" % ( var['VAR'] )  
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	
-	_results += '\n________________________________________________________\n\n'
+	_results += '\n__________________________________________________________________________________\n\n'
 	_results += 'Test results:  Passed=%s, Failed=%s, Errors=%s\n' % (passed,failed,errors)
 	return _results
 
 
+
+def print_debug(data):
+	db = ''
 
 
 def parse_line(line):
