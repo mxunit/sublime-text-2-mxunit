@@ -132,6 +132,54 @@
       </dict>
      </dict>
 
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>message</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#FF2332</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>stack_trace</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#009B95</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>time</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#445566</string>
+      </dict>
+     </dict>
+
+     <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>time_ms</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#445566</string>
+      </dict>
+     </dict>
+
   </array>
   <key>uuid</key>
   <string>e478d7a9-c6e7-445a-b9db-f1b714dbead9</string>

@@ -8,6 +8,7 @@ import os
 import json
 import datetime
 import re
+import pprint
 from urllib2 import urlopen,HTTPError
 import sublime_plugin
 import sublime
@@ -148,7 +149,8 @@ def pretty_results(test_results):
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
-	_results += '		Passed: %s, Failed: %s, Errors: %s\n' % (passed,failed,errors)
+	total_time  =  len( [ x for x in tests if x['TIME'] > 0] )
+	_results += '		Passed: %s, Failed: %s, Errors: %s, Time: %sms\n' % (passed,failed,errors,total_time)
 	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
 	_results += '__________________________________________________________________________________\n\n'
 
@@ -156,13 +158,18 @@ def pretty_results(test_results):
 	#pprint( len(tests) )
 
 	for test in tests:
-		_results += '	%s.%s (%s)\n' % (test['COMPONENT'],test['TESTNAME'], test['TESTSTATUS'] ) 
+		_results += '	%s.%s (%s) %sms\n' % (test['COMPONENT'], test['TESTNAME'], test['TESTSTATUS'], test['TIME'] ) 
+		
+		if( test['TESTSTATUS'] in ('Failed','Error') ):
+			_results += '		Message: %s\n' % (test['ERROR']['Message'])
+			_results += '		StackTrace: %s\n' % (test['ERROR']['StackTrace'])
+
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
 				# print '%s = %s' % ( var, _debug[i] )
-				_results += "		Debug: %s \n" % ( var['VAR'] )  
+				_results += "		Debug: 	%s \n " % ( var['VAR'] ) 
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	

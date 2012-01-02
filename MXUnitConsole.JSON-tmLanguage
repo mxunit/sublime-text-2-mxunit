@@ -17,6 +17,9 @@
     { "match": "Errors",
       "name": "errors"
     },
+    { "match": "Time",
+      "name": "time"
+    },
     { "match": "_{5,}",
       "name": "underscore"
     },
@@ -26,26 +29,21 @@
     { "match": "Debug:.*$",
       "name": "debug"
     },
-
-    { "name": "debug.wrapper",
-      "begin": ">>Debug:",
-      "beginCaptures": {
-        "1": { "name": "debug.data" }
-        },
-      "patterns":
-        [
-           { "name": "debug",
-            "match": ".*"}
-        ],
-      "end": "<<"
-      },
-
+    { "match": "Message:.*$",
+      "name": "message"
+    },
+    { "match": "StackTrace:.*$",
+      "name": "stack_trace"
+    },
 
     { "match": "Date:.*$",
       "name": "current_date"
     },
     { "match": "status=",
       "name": "status_eq"
+    },
+    { "match": "[0-9]+\\.[0-9]+ms",
+      "name": "time_ms"
     }
 
   ],

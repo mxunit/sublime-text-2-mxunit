@@ -40,6 +40,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>Time</string>
+			<key>name</key>
+			<string>time</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>_{5,}</string>
 			<key>name</key>
 			<string>underscore</string>
@@ -57,29 +63,16 @@
 			<string>debug</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>&gt;&gt;Debug:</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>debug.data</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>&lt;&lt;</string>
+			<key>match</key>
+			<string>Message:.*$</string>
 			<key>name</key>
-			<string>debug.wrapper</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>.*</string>
-					<key>name</key>
-					<string>debug</string>
-				</dict>
-			</array>
+			<string>message</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>StackTrace:.*$</string>
+			<key>name</key>
+			<string>stack_trace</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -92,6 +85,12 @@
 			<string>status=</string>
 			<key>name</key>
 			<string>status_eq</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>[0-9]+\.[0-9]+ms</string>
+			<key>name</key>
+			<string>time_ms</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
