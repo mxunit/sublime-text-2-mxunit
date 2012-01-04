@@ -9,5 +9,6 @@
 
 {
 
-	"last_test_run" : ""
+	"last_test_run" : "",
+	"show_failures_only": "false"
 }

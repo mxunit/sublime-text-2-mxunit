@@ -1,5 +1,8 @@
 [
 	{"keys": ["alt+r"], "command": "mxunit"},
+	{"keys": ["ctrl+shift+alt+r"], "command": "run_all_failures_only"},
 	{"keys": ["shift+alt+r"], "command": "single_test"},
-	{"keys": ["ctrl+alt+r"], "command": "run_last_test"}
+	{"keys": ["ctrl+alt+r"], "command": "run_last_test"},
+	{"keys": ["esc"], "command": "hide_test_panel"},
+	{"keys": ["alt+shift+t"], "command": "show_test_panel"}
 ]

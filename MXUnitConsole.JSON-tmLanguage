@@ -8,6 +8,9 @@
   	{ "match": ":::::::   MXUnit Test Results  :::::::",
       "name": "title"
     },
+    { "match": "\\*\\*\\* Showing Failures Only \\*\\*\\*",
+      "name": "failures_only"
+    },
     { "match": "Passed",
   		"name": "passed"
 	  },

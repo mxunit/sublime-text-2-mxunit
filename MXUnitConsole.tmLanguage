@@ -22,6 +22,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\*\*\* Showing Failures Only \*\*\*</string>
+			<key>name</key>
+			<string>failures_only</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>Passed</string>
 			<key>name</key>
 			<string>passed</string>

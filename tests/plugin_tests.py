@@ -22,6 +22,14 @@ class MXUnitTest(unittest.TestCase):
 		self.assertEquals( 33, passes )
 		
 	
+	def test_read_json_show_failures_only(self):
+		test_results_raw=open('test_results_fixture.json')
+		tests = json.load( test_results_raw )
+		# pprint(tests)
+		failed =  [ test for test in tests if test['TESTSTATUS']=='Failed' ] 
+		for item in failed:
+			pass #pprint (item)
+		self.assertEquals( 2, len(failed) )
 
 
 	#To Do: Hanlde cffunction name="asdasd" . HTML attribute

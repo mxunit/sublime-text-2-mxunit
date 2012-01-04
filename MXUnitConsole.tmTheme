@@ -140,7 +140,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#FF2332</string>
+        <string>#AA000D</string>
       </dict>
      </dict>
 
@@ -177,6 +177,18 @@
       <dict>
         <key>foreground</key>
         <string>#445566</string>
+      </dict>
+     </dict>
+
+      <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
+      <string>failures_only</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#FFC340</string>
       </dict>
      </dict>
 

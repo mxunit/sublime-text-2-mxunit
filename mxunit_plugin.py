@@ -52,7 +52,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 		print  self.test_items[ key ]
 	
 
-	def run_test(self, url, edit):
+	def run_test(self, url, edit, show_failures_only=False):
 		"""
 		Main test runner. Intended to be called from child command. 
 		"""
@@ -63,15 +63,15 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self._results = _res.read()
 			self.view.window().run_command("show_panel", {"panel": "output.tests"})
 			self.output_view = self.view.window().get_output_panel("tests")
-			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results) ) 
-			self.save_test_run(url)
+			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results, show_failures_only) ) 
+			self.save_test_run(url,show_failures_only)
 
 		except HTTPError as e:
 			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s' % e)
 
 	
 	
-	def save_test_run(self, url):
+	def save_test_run(self, url, show_failures_only):
 		"""
 		Persists the last run test. 
 
@@ -79,6 +79,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 		"""
 		print 'Saving url: %s' % url
 		self.last_run_settings.set("last_test_run", url)
+		self.last_run_settings.set("show_failures_only", show_failures_only)
 		sublime.save_settings("mxunit-last-run.sublime-settings")
 		print self.last_run_settings.get('last_test_run')
 
@@ -95,6 +96,27 @@ class ShowQpCommand(BaseCommand):
 	def run(self,edit):
 		self.show_qp()	
 
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class HideTestPanelCommand(BaseCommand):
+	""" 
+	Hide the test results panel (esc works fine, but whatever...)
+ 	"""
+	def run(self,edit):
+		self.view.window().run_command("hide_panel", {"panel": "output.tests"})	
+
+
+class ShowTestPanelCommand(BaseCommand):
+	""" 
+	Shows the test results panel
+ 	"""
+	def run(self,edit):
+		self.view.window().run_command("show_panel", {"panel": "output.tests"})			
+
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class MxunitCommand(BaseCommand):
 	"""
@@ -110,6 +132,19 @@ class MxunitCommand(BaseCommand):
 		self.run_test(_url, edit)
 		
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class RunAllFailuresOnlyCommand(BaseCommand):
+	"""
+	Runs all tests in an MXUnit testcase but display only failures.
+	"""
+	def run(self,edit):
+		_view = self.view
+		_current_file = _view.file_name()
+		#test
+		_test_cfc = _current_file.replace(self.web_root, '')
+		print 'Test: %s' % _test_cfc
+		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
+		self.run_test(_url, edit,show_failures_only=True)
 
 
 
@@ -120,7 +155,8 @@ class RunLastTestCommand(BaseCommand):
 	"""
 	def run(self,edit):
 		_url = self.last_run_settings.get("last_test_run")
-		self.run_test(_url, edit)
+		_show_failures = self.last_run_settings.get("show_failures_only")
+		self.run_test(_url, edit,_show_failures)
 
 
 
@@ -158,17 +194,17 @@ class SingleTestCommand(BaseCommand):
 #                                                                                       #  
 #########################################################################################
 
-def pretty_results(test_results):
+def pretty_results(test_results, show_failures_only):
 	"""
 	Format JSON to string output.  
 
 	(To Do: use Python template and JSON as context)
 	"""
 
-	_results = '__________________________________________________________________________________\n\n'
-	_results += '		:::::::   MXUnit Test Results  :::::::     \n\n'
-	#_results += '__________________________________________________________________________\n\n'
+	_results =  '__________________________________________________________________________________\n\n'
+	_results += '		:::::::   MXUnit Test Results  :::::::     \n'
 	tests = json.loads(test_results)
+	 
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
@@ -177,8 +213,9 @@ def pretty_results(test_results):
 	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
 	_results += '__________________________________________________________________________________\n\n'
 
-	#To Do: Calculate totals --total, errors, failures, time
-	#pprint( len(tests) )
+	if show_failures_only:
+		_results += '				  *** Showing Failures Only ***  \n\n'
+		tests = [ _test for _test in tests if _test['TESTSTATUS']=='Failed' ]
 
 	for test in tests:
 		_results += '	%s.%s (%s) %sms\n' % (test['COMPONENT'], test['TESTNAME'], test['TESTSTATUS'], test['TIME'] ) 
