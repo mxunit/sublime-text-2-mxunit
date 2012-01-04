@@ -11,7 +11,7 @@ Open an MXUnit testcase in Sublime Text 2 and then:
 
 __(Using Sublime's Command Pallette)__
 
- - Hit ```shift+ctrl+p``` (Command pallette)
+ - Type ```shift+ctrl+p``` (Command pallette)
  - Type ```mx``` to see list of available commands
  - Select [ ```Run tests``` | ```Run test on line``` | ```Run last test``` ]
  - (More to come!)
@@ -22,9 +22,9 @@ __(Using Sublime's Command Pallette)__
 
 __Or (Using keyboard shortcuts)__
 
- - To run all tests for an MXUnit testcase hit ```alt+r```
- - To run a single test, move your cursor to the test function and hit ```shift+alt+r```
- - To re-run last test  hit ```ctrl+alt+r```
+ - To run all tests for an MXUnit testcase type ```alt+r```
+ - To run a single test, move your cursor to the test function and type ```shift+alt+r```
+ - To re-run last test type ```ctrl+alt+r```
 
 
 __Or (Using mouse clicks)__
@@ -65,6 +65,15 @@ __Or (Using mouse clicks)__
 	The ```component_root``` is how the web server sees your application. Above assumed all apps are visible from
 	http://localhost:8301/  and all files are stored in the  ```web_root``` directory.
 
+
+### Installation via [Package Control](http://wbond.net/sublime_packages/package_control)
+
+1. Type ```ctrl+shift+p``` (see below)
+2. Select 'Package Control: Install Package' 
+3. Select 'MXUnit'
+4. Follow step #4 above for editing the ```mxunit.settings``` file.
+
+![Package Control Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/pacakge-control-ss.png)
 
 
 ### Docs and Bugs
