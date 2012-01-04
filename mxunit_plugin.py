@@ -243,7 +243,7 @@ def pretty_results(test_results, show_failures_only):
 
 def parse_line(line):
 	"""
-	From a line of text gets the function name (Only with script. Not tags, yet)
+	From a line of text gets the function name.
 	"""
 	pattern = re.compile("""
 		[ \t]*
