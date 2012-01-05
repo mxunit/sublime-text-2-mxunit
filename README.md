@@ -86,7 +86,7 @@ __Or (Using mouse clicks)__
 
 
 ## To Do
-Lots! And could use some help.  Fork this repository, hack away, and make a pull request.  
+Lots - and the project could use some help!  Fork this repository, hack away, and make a pull request.  
 
 These are some ideas/issues:
 
