@@ -3,7 +3,13 @@
 ## Description
 A plugin for Sublime Text 2 that runs MXUnit tests.
 
-_As of Jan-1-2012, this is brand new, unstable, and likely has numerous issues._
+
+### News
+
+ - Jan-5-2012: Still unstable, but improving nicely. 
+ - Jan-1-2012: Brand new, unstable, and likely has numerous issues
+
+
 
 ## How it works
 
@@ -93,6 +99,9 @@ These are some ideas/issues:
  - Display a list of test methods in the quick panel and when the method is selected, run the test
  - Maintain a history of test runs and display that history in a quick panel
  - Pretty print debug output and wrap it in folding regions
+ - Run all tests in a directory
+ - Implement concurrency for test runs.  This should support long-running test suites
+ - Ant? Or some Python build script?
  - Key bindings to switch back and forth between test and code
  - Plugin tests!  Sadly, testing is not baked into Sublime plugin development. Something is needed to make this happen.
 
@@ -102,6 +111,7 @@ These are some ideas/issues:
  - Sublimetext 2 API - http://www.sublimetext.com/docs/2/api_reference.html
  - How to create a plugin: http://net.tutsplus.com/tutorials/python-tutorials/how-to-create-a-sublime-text-2-plugin/
  - Unoffical (but very good) docs - http://sublimetext.info/docs/en/
+ - ColdFusion Sublime Tesxt bundle - https://github.com/indynagpal/coldfusion-sublime-text-2
 
 
 
