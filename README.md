@@ -78,15 +78,23 @@ __Or (Using mouse clicks)__
 ![Package Control Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/pacakge-control-ss.png)
 
 
-## Docs and Bugs
+## Docs and Bugs (to do)
 
- - https://github.com/virtix/sublime-text-2-mxunit/wiki
+ - Docs: https://github.com/virtix/sublime-text-2-mxunit/wiki
   
- - https://github.com/virtix/sublime-text-2-mxunit/issues
+ - Bugs: https://github.com/virtix/sublime-text-2-mxunit/issues
 
 
 ## To Do
-Lots!
+Lots! And could use some help.  Fork this repository, hack away, and make a pull request.  
+
+These are some ideas/issues:
+
+ - Display a list of test methods in the quick panel and when the method is selected, run the test
+ - Maintain a history of test runs and display that history in a quick panel
+ - Pretty print debug output and wrap it in folding regions
+ - Key bindings to switch back and forth between test and code
+ - Plugin tests!  Sadly, testing is not baked into Sublime plugin development. Something is needed to make this happen.
 
 
 ##References
