@@ -1,5 +1,5 @@
 {
-  "syntax": "Packages/MXUnit/MXUnitConsole.tmLanguage",
-  "color_scheme": "Packages/MXUnit/MXUnitConsole.tmTheme"
+  "syntax": "Packages/sublime-text-2-mxunit/MXUnitConsole.tmLanguage",
+  "color_scheme": "Packages/sublime-text-2-mxunit/MXUnitConsole.tmTheme"
 }
   
