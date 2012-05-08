@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+
+component extends="mxunit.framework.TestCase" {
+	
+
+	function setUp(){ }
+
+	function tearDown(){ }
+	
+	function test_$1(){
+		assert(false, "Fix me");
+	}
+
+	
+}
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger
+	<scope>source.cfscript</scope>
+	 -->
+	<description>TestCase (MXUnit)</description>
+
+</snippet>

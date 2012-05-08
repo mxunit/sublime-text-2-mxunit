@@ -1,0 +1,21 @@
+[
+  { "caption": "-" },
+  {
+    "caption": "MXUnit",
+    "children":
+      [
+        { "caption": "Run all tests", "command": "mxunit" },
+        { "caption": "Run test on line", "command": "single_test" },
+        { "caption": "Run all tests in directory", "command": "run_all_in_directory" },
+        { "caption": "Run last test", "command": "run_last_test" },
+        { "caption": "Run all - show failures only", "command": "run_all_failures_only" },
+        { "caption": "-" },
+        { "caption": "Show quick panel", "command": "show_qp" },
+        { "caption": "-" },
+        { "caption": "Show test panel", "command": "show_test_panel" },
+        { "caption": "Hide test panel", "command": "hide_test_panel" },
+        { "caption": "-" },
+        { "caption": "Switch Between Code and Test", "command": "switch_between_code_and_test" }
+      ]
+  }
+]

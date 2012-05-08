@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "repositories": [
+    "https://github.com/virtix/sublime-text-2-mxunit"
+  ],
+  "package_name_map": {
+    "sublime-text-2-mxunit": "MXUnit"
+  }
+}

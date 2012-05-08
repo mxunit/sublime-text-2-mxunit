@@ -1,0 +1,54 @@
+{ "name": "MXUnit Test Results",
+  "scopeName": "mxunit.testresults", 
+  "fileTypes": ["text"], 
+  "foldingStartMarker": ">>",
+  "foldingStopMarker": "<<",
+  "patterns": [
+  	
+  	{ "match": ":::::::   MXUnit Test Results  :::::::",
+      "name": "title"
+    },
+    { "match": "\\*\\*\\* Showing Failures Only \\*\\*\\*",
+      "name": "failures_only"
+    },
+    { "match": "Passed",
+  		"name": "passed"
+	  },
+    { "match": "Failed",
+      "name": "failed"
+    },
+    { "match": "Errors",
+      "name": "errors"
+    },
+    { "match": "Time",
+      "name": "time"
+    },
+    { "match": "_{5,}",
+      "name": "underscore"
+    },
+    { "match": "\\|\\-+$",
+      "name": "dash"
+    },
+    { "match": "Debug:.*$",
+      "name": "debug"
+    },
+    { "match": "Message:.*$",
+      "name": "message"
+    },
+    { "match": "StackTrace:.*$",
+      "name": "stack_trace"
+    },
+
+    { "match": "Date:.*$",
+      "name": "current_date"
+    },
+    { "match": "status=",
+      "name": "status_eq"
+    },
+    { "match": "[0-9]+\\.[0-9]+ms",
+      "name": "time_ms"
+    }
+
+  ],
+  "uuid": "e478d7a9-c6e7-445a-b9db-f1b714dbfbc5"
+}

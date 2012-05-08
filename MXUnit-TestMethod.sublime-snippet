@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+
+function test_$1() {
+	//TestCase specific setup:$2;
+	assert($3);
+}
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>test</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger
+	<scope>source.cfscript</scope>
+	 -->
+	 <description>Test Method (MXUnit)</description>
+</snippet>

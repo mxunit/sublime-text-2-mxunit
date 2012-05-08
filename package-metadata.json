@@ -1,0 +1,15 @@
+{
+  "url": "https://github.com/virtix/sublime-text-2-mxunit",
+  "version": "0.9.1",
+  "description": "Sublime Text 2 plugin for MXUnit",
+  "author": "Bill Shelton",
+  "homepage": "https://github.com/virtix/sublime-text-2-mxunit",
+  "platforms": {
+				"*": [
+					{
+						"version": "0.9.1",
+						"url": "https://github.com/virtix/sublime-text-2-mxunit"
+					}
+				]
+			}
+}
