@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+/**
+* @author $TM_FULLNAME
+*/
+component name="$1"  {
+	
+
+	function setUp(){ 
+		return this;
+	}	
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>comp</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+	<description>MXUnit: New CFC</description>
+</snippet>
