@@ -26,11 +26,12 @@ class BaseCommand(sublime_plugin.TextCommand):
 		"""
 		global_settings = sublime.load_settings("mxunit.settings")
 		self.last_run_settings = sublime.load_settings("mxunit-last-run.sublime-settings")
-		self.server = global_settings.get('server', 'localhost')
 		self.view = view
 		self.output_view = None
 		#grab the runner config items
 		self.port = global_settings.get('port', '80')
+		self.server = global_settings.get('server', 'localhost')
+		self.component_root = global_settings.get('component_root', '/')
 		self.web_root = global_settings.get('web_root', '/var/www/html/')
 		self._win = None
 		self.test_items = { 'test-1':{'url':'AAAAAA'},
@@ -67,7 +68,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self.save_test_run(url,show_failures_only)
 
 		except HTTPError as e:
-			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s' % e)
+			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nTarget: %s' % (e,url) )
 
 	
 	
@@ -128,7 +129,7 @@ class MxunitCommand(BaseCommand):
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
+		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit)
 		
 
@@ -143,7 +144,7 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
+		_url = 'http://' + self.server + ':' + self.port + self.component_root  + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit,show_failures_only=True)
 
 
@@ -180,7 +181,7 @@ class SingleTestCommand(BaseCommand):
 		if test_method == '' : 
 			sublime.error_message ('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
 			return
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
+		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
 		self.run_test(_url, edit)
 
 
