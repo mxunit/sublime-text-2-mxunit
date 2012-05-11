@@ -1,8 +1,6 @@
 <snippet>
 	<content><![CDATA[
-/**
-* @author $TM_FULLNAME
-*/
+
 component name="$1"  {
 	
 

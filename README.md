@@ -5,9 +5,9 @@ A plugin for Sublime Text 2 that runs MXUnit tests - http://mxunit.org.
 
 
 ### News
-
- - Jan-5-2012: Still unstable, but improving nicely. 
- - Jan-1-2012: Brand new, unstable, and likely has numerous issues
+ - May-12-2012:  Added completions for assertions and other MXUnit functions.
+ - Jan-05-2012:  Still unstable, but improving nicely. 
+ - Jan-01-2012:  Brand new, unstable, and likely has numerous issues
 
 
 
