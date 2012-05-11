@@ -1,19 +1,12 @@
 <snippet>
 	<content><![CDATA[
-/**
-* @author $TM_FULLNAME
-*/
-component name="$1"  {
-	
-
-	function init(){ 
-		return this;
-	}	
+function $1($2) {
+	return $3;
 }
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>comp</tabTrigger>
+	<tabTrigger>func</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
-	<description>MXUnit: New CFC</description>
+	<description>TDD function snippet (MXUnit)</description>
 </snippet>

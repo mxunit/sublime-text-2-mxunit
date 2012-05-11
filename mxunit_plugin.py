@@ -67,8 +67,11 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results, show_failures_only) ) 
 			self.save_test_run(url,show_failures_only)
 
-		except HTTPError as e:
-			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nTarget: %s' % (e,url) )
+		except HTTPError , e:
+			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nCheck syntax, too.\n\nTarget: %s' % (e,url) )
+		
+		except Exception , e:
+			sublime.error_message ('\nAh Snap, Scoob. Like something went way South!\n\n%s\n\nTarget: %s' % (e,url) )
 
 	
 	
