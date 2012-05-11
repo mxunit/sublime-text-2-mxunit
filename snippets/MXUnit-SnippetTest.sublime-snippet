@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+/**
+*  
+* 
+* \$SELECTION = $SELECTION				 
+* \$TM_CURRENT_LINE = $TM_CURRENT_LINE
+* \$TM_CURRENT_WORD = $TM_CURRENT_WORD
+* \$TM_FILENAME = $TM_FILENAME
+* \$TM_FILEPATH = $TM_FILEPATH
+* \$TM_FULLNAME = $TM_FULLNAME
+* \$TM_LINE_INDEX = $TM_LINE_INDEX		  
+* \$TM_LINE_NUMBER = $TM_LINE_NUMBER
+* \$TM_SELECTED_TEXT = $TM_SELECTED_TEXT
+* \$TM_SOFT_TABS = $TM_SOFT_TABS
+* \$TM_TAB_SIZE = $TM_TAB_SIZE		
+*
+*/
+
+component name="$1"  {
+	
+	function init(){ 
+		return this;
+	}	
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>snip</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+	<description>Example Snippet (cfscript)</description>
+</snippet>
