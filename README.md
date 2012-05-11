@@ -111,10 +111,7 @@ These are some ideas/issues:
  - Sublimetext 2 API - http://www.sublimetext.com/docs/2/api_reference.html
  - How to create a plugin: http://net.tutsplus.com/tutorials/python-tutorials/how-to-create-a-sublime-text-2-plugin/
  - Unoffical (but very good) docs - http://sublimetext.info/docs/en/
- - ColdFusion Sublime Text bundles :
- 	- https://github.com/SublimeText/ColdFusion
- 	- https://github.com/indynagpal/coldfusion-sublime-text-2
+ - ColdFusion Sublime Text bundle - https://github.com/SublimeText/ColdFusion
+ 	
 
 
-
-TM
