@@ -212,7 +212,8 @@ def pretty_results(test_results, show_failures_only):
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
-	total_time  =  len( [ x for x in tests if x['TIME'] > 0] )
+	
+	total_time = sum([ x['TIME'] for x in tests ])
 	_results += '		Passed: %s, Failed: %s, Errors: %s, Time: %sms\n' % (passed,failed,errors,total_time)
 	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
 	_results += '__________________________________________________________________________________\n\n'
