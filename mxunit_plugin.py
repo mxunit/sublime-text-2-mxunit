@@ -226,15 +226,16 @@ def pretty_results(test_results, show_failures_only):
 		_results += '	%s.%s (%s) %sms\n' % (test['COMPONENT'], test['TESTNAME'], test['TESTSTATUS'], test['TIME'] ) 
 		
 		if( test['TESTSTATUS'] in ('Failed','Error') ):
-			_results += '		Message: %s\n' % (test['ERROR']['Message'])
-			_results += '		StackTrace: %s\n' % (test['ERROR']['StackTrace'])
+			_results += '		Message: %s\n' % test['ERROR']['Message']
+			_results += '		StackTrace: \n%s\t\t\n' % pretty_print_stacktrace(test['ERROR']['StackTrace']) 
 
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
 				# print '%s = %s' % ( var, _debug[i] )
-				_results += "		Debug: 	%s \n " % ( var['VAR'] ) 
+				_results += "		Debug: 	%s \n " % ( type(var['VAR']) ) 
+
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	
@@ -243,6 +244,14 @@ def pretty_results(test_results, show_failures_only):
 	return _results
 
 
+
+def pretty_print_stacktrace(data):
+	results = ''
+	print len(data[0])
+	for e in data:
+		results += '\t\t\t%s.%s\t%s - %s \n' % (e['ClassName'],e['MethodName'],e['FileName'],e['LineNumber'])
+	# return data
+	return results
 
 
 
