@@ -40,7 +40,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>Errors</string>
+			<string>Error[s]?</string>
 			<key>name</key>
 			<string>errors</string>
 		</dict>
@@ -75,8 +75,14 @@
 			<string>message</string>
 		</dict>
 		<dict>
-			<key>match</key>
+			<!-- <key>match</key>
 			<string>StackTrace:.*$</string>
+			 -->
+			  <key>begin</key>
+              <string>StackTrace:.*$</string>
+              <key>end</key>
+              <string>}</string>
+
 			<key>name</key>
 			<string>stack_trace</string>
 		</dict>

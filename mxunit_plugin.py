@@ -225,17 +225,18 @@ def pretty_results(test_results, show_failures_only):
 	for test in tests:
 		_results += '	%s.%s (%s) %sms\n' % (test['COMPONENT'], test['TESTNAME'], test['TESTSTATUS'], test['TIME'] ) 
 		
-		if( test['TESTSTATUS'] in ('Failed','Error') ):
-			_results += '		Message: %s\n' % test['ERROR']['Message']
-			_results += '		StackTrace: \n%s\t\t\n' % pretty_print_stacktrace(test['ERROR']['StackTrace']) 
-
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
-				# print '%s = %s' % ( var, _debug[i] )
-				_results += "		Debug: 	%s \n " % ( type(var['VAR']) ) 
+				print '%s = %s' % ( var, _debug[i] )
+				_results += "		Debug: 	%s \n " %  var['VAR']  
 
+		if( test['TESTSTATUS'] in ('Failed','Error') ):
+			_results += '		Message: %s\n' % test['ERROR']['Message']
+			_results += '		StackTrace: {\n%s\t\t\n\t\t}\n' % pretty_print_stacktrace(test['ERROR']['StackTrace']) 
+
+		
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	
