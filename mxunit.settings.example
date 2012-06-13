@@ -9,11 +9,9 @@
 {
 	
 	"server" : "localhost",
-	"port" : "8080" ,
+	"port" : "8301" ,
 
 	//Make sure to add leading and trailing '/'
-	"component_root" : "/cfusion/" ,
-
-	"web_root" :    "/Users/sheltonb/Software/apache-tomcat-6.0.35/webapps/cfusion"
-
+	"component_root" : "/" ,
+	"web_root" :    "/home/billy/software/jrun4/servers/dev/cfusion.ear/cfusion.war"
 }

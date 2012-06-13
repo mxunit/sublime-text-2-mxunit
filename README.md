@@ -56,9 +56,12 @@ __Or (Using mouse clicks)__
 	$ git clone git://github.com/virtix/sublime-text-2-mxunit.git
 
 	```
+2. Rename the cloned directory to ```MXUnit```
 
-2. Edit the ```mxunit.settings``` configuration file located in the plugin's root folder,
-   adding your development-specific settings:
+3. Create an ```mxunit.settings``` configuration file located in the plugin's root folder,
+   adding your development-specific settings. Note, you can copy ```mxunit.settings.example``` to 
+   ```mxunit.settings```.  You can also get to this location in Sublime by selecting
+   Preferences > Browse Packages. Find the MXUnit directory.
 
 	```bash
 	{
@@ -79,7 +82,7 @@ __Or (Using mouse clicks)__
 1. Type ```ctrl+shift+p``` (see below)
 2. Select 'Package Control: Install Package' 
 3. Select 'MXUnit'
-4. Follow step #4 above for editing the ```mxunit.settings``` file.
+4. Follow step #3 above for editing the ```mxunit.settings``` file.
 
 ![Package Control Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/pacakge-control-ss.png)
 

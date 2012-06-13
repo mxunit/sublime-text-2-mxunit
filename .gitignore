@@ -1,4 +1,5 @@
 *.pyc
 *.cache
+mxunit.settings
 mxunit-sublime-text-plugin.sublime-workspace
 mxunit-sublime-text-plugin.sublime-project
