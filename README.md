@@ -1,13 +1,13 @@
 # MXUnit Test Runner Plugin for [Sublime Text 2](http://www.sublimetext.com/)
 
 ## Description
-A plugin for Sublime Text 2 that runs MXUnit tests.
+A plugin for Sublime Text 2 that runs MXUnit tests - http://mxunit.org.
 
 
 ### News
-
- - Jan-5-2012: Still unstable, but improving nicely. 
- - Jan-1-2012: Brand new, unstable, and likely has numerous issues
+ - May-12-2012:  Added completions for assertions and other MXUnit functions.
+ - Jan-05-2012:  Still unstable, but improving nicely. 
+ - Jan-01-2012:  Brand new, unstable, and likely has numerous issues
 
 
 
@@ -111,8 +111,7 @@ These are some ideas/issues:
  - Sublimetext 2 API - http://www.sublimetext.com/docs/2/api_reference.html
  - How to create a plugin: http://net.tutsplus.com/tutorials/python-tutorials/how-to-create-a-sublime-text-2-plugin/
  - Unoffical (but very good) docs - http://sublimetext.info/docs/en/
- - ColdFusion Sublime Tesxt bundle - https://github.com/indynagpal/coldfusion-sublime-text-2
+ - ColdFusion Sublime Text bundle - https://github.com/SublimeText/ColdFusion
+ 	
 
 
-
-TM

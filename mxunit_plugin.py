@@ -26,11 +26,12 @@ class BaseCommand(sublime_plugin.TextCommand):
 		"""
 		global_settings = sublime.load_settings("mxunit.settings")
 		self.last_run_settings = sublime.load_settings("mxunit-last-run.sublime-settings")
-		self.server = global_settings.get('server', 'localhost')
 		self.view = view
 		self.output_view = None
 		#grab the runner config items
 		self.port = global_settings.get('port', '80')
+		self.server = global_settings.get('server', 'localhost')
+		self.component_root = global_settings.get('component_root', '/')
 		self.web_root = global_settings.get('web_root', '/var/www/html/')
 		self._win = None
 		self.test_items = { 'test-1':{'url':'AAAAAA'},
@@ -66,8 +67,11 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results, show_failures_only) ) 
 			self.save_test_run(url,show_failures_only)
 
-		except HTTPError as e:
-			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s' % e)
+		except HTTPError , e:
+			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nCheck syntax, too.\n\nTarget: %s' % (e,url) )
+		
+		except Exception , e:
+			sublime.error_message ('\nAh Snap, Scoob. Like something went way South!\n\n%s\n\nTarget: %s' % (e,url) )
 
 	
 	
@@ -128,7 +132,7 @@ class MxunitCommand(BaseCommand):
 		_web_root = self.canonize(self.web_root)
 		_test_cfc = _current_file.replace(_web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
+		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit)
 
 	def canonize(self,path):
@@ -146,7 +150,7 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
+		_url = 'http://' + self.server + ':' + self.port + self.component_root  + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit,show_failures_only=True)
 
 
@@ -183,7 +187,7 @@ class SingleTestCommand(BaseCommand):
 		if test_method == '' : 
 			sublime.error_message ('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
 			return
-		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
+		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
 		self.run_test(_url, edit)
 
 
@@ -211,7 +215,8 @@ def pretty_results(test_results, show_failures_only):
 	passed =  len( [ x for x in tests if x['TESTSTATUS']=='Passed'] )
 	failed =  len( [ x for x in tests if x['TESTSTATUS']=='Failed'] )
 	errors =  len( [ x for x in tests if x['TESTSTATUS']=='Error'] )
-	total_time  =  len( [ x for x in tests if x['TIME'] > 0] )
+	
+	total_time = sum([ float(x['TIME']) for x in tests ])
 	_results += '		Passed: %s, Failed: %s, Errors: %s, Time: %sms\n' % (passed,failed,errors,total_time)
 	_results += '		Date:  %s\n' % (datetime.datetime.now().strftime("%A, %B %d, %Y, %I:%M %p"))
 	_results += '__________________________________________________________________________________\n\n'
@@ -223,16 +228,18 @@ def pretty_results(test_results, show_failures_only):
 	for test in tests:
 		_results += '	%s.%s (%s) %sms\n' % (test['COMPONENT'], test['TESTNAME'], test['TESTSTATUS'], test['TIME'] ) 
 		
-		if( test['TESTSTATUS'] in ('Failed','Error') ):
-			_results += '		Message: %s\n' % (test['ERROR']['Message'])
-			_results += '		StackTrace: %s\n' % (test['ERROR']['StackTrace'])
-
 		if( test['DEBUG'] ):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
-				# print '%s = %s' % ( var, _debug[i] )
-				_results += "		Debug: 	%s \n " % ( var['VAR'] ) 
+				print '%s = %s' % ( var, _debug[i] )
+				_results += "		Debug: 	%s \n " %  var['VAR']  
+
+		if( test['TESTSTATUS'] in ('Failed','Error') ):
+			_results += '		Message: %s\n' % test['ERROR']['Message']
+			_results += '		StackTrace: {\n%s\t\t\n\t\t}\n' % pretty_print_stacktrace(test['ERROR']['StackTrace']) 
+
+		
 			
 		_results += '\n|--------------------------------------------------------------------------------\n'
 	
@@ -241,6 +248,14 @@ def pretty_results(test_results, show_failures_only):
 	return _results
 
 
+
+def pretty_print_stacktrace(data):
+	results = ''
+	print len(data[0])
+	for e in data:
+		results += '\t\t\t%s.%s\t%s - %s \n' % (e['ClassName'],e['MethodName'],e['FileName'],e['LineNumber'])
+	# return data
+	return results
 
 
 

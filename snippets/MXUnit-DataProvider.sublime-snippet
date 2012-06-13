@@ -1,11 +1,9 @@
 <snippet>
 	<content><![CDATA[
-
-
 _data = [$1];
 
 /**
-* @mxunit:dataprovider = _data
+* @mxunit:dataprovider  _data
 */
 function test_$2(data) {
 	//Do something for each element in arguments.data
