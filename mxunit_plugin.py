@@ -124,12 +124,15 @@ class MxunitCommand(BaseCommand):
 	"""
 	def run(self,edit):
 		_view = self.view
-		_current_file = _view.file_name()
-		#test
-		_test_cfc = _current_file.replace(self.web_root, '')
+		_current_file = self.canonize( _view.file_name() )
+		_web_root = self.canonize(self.web_root)
+		_test_cfc = _current_file.replace(_web_root, '')
 		print 'Test: %s' % _test_cfc
 		_url = 'http://' + self.server + ':' + self.port + '/' + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit)
+
+	def canonize(self,path):
+		return path.replace('\\','/')
 		
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
