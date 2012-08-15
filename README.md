@@ -5,6 +5,7 @@ A plugin for Sublime Text 2 that runs MXUnit tests - http://mxunit.org.
 
 
 ### News
+ - Moved repo to MXUnit org
  - May-12-2012:  Added completions for assertions and other MXUnit functions.
  - Jan-05-2012:  Still unstable, but improving nicely. 
  - Jan-01-2012:  Brand new, unstable, and likely has numerous issues
@@ -23,7 +24,7 @@ __(Using Sublime's Command Pallette)__
  - (More to come!)
 
 
-![MXUnit Sublime Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/MXUnit-Sublime-Text-Command_Window.png)
+![MXUnit Sublime Screenshot](https://github.com/mxunit/sublime-text-2-mxunit/raw/master/MXUnit-Sublime-Text-Command_Window.png)
 
 
 __Or (Using keyboard shortcuts)__
@@ -53,7 +54,7 @@ __Or (Using mouse clicks)__
 
 	```bash
 	$ cd ~/.config/sublime-text-2/Packages/
-	$ git clone git://github.com/virtix/sublime-text-2-mxunit.git
+	$ git clone git://github.com/mxunit/sublime-text-2-mxunit.git
 
 	```
 2. Rename the cloned directory to ```MXUnit```
@@ -84,14 +85,14 @@ __Or (Using mouse clicks)__
 3. Select 'MXUnit'
 4. Follow step #3 above for editing the ```mxunit.settings``` file.
 
-![Package Control Screenshot](https://github.com/virtix/sublime-text-2-mxunit/raw/master/pacakge-control-ss.png)
+![Package Control Screenshot](https://github.com/mxunit/sublime-text-2-mxunit/raw/master/pacakge-control-ss.png)
 
 
 ## Docs and Bugs (to do)
 
- - Docs: https://github.com/virtix/sublime-text-2-mxunit/wiki
+ - Docs: https://github.com/mxunit/sublime-text-2-mxunit/wiki
   
- - Bugs: https://github.com/virtix/sublime-text-2-mxunit/issues
+ - Bugs: https://github.com/mxunit/sublime-text-2-mxunit/issues
 
 
 ## To Do
