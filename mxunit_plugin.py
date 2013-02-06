@@ -233,7 +233,15 @@ def pretty_results(test_results, show_failures_only):
 			i=0
 			for var in _debug:
 				print '%s = %s' % ( var, _debug[i] )
-				_results += "		Debug: 	%s \n " %  var['VAR']  
+				if 'var' in var:
+					var_val = var['var']
+				elif 'VAR' in var:
+					var_val = var['VAR']
+				else:
+					var_val = None
+
+				if var_val != None:
+					_results += "		Debug: 	%s \n " % var_val
 
 		if( test['TESTSTATUS'] in ('Failed','Error') ):
 			_results += '		Message: %s\n' % test['ERROR']['Message']
