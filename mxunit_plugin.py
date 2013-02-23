@@ -31,6 +31,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 		#grab the runner config items
 		self.port = global_settings.get('port', '80')
 		self.server = global_settings.get('server', 'localhost')
+		self.protocol = 'https://' if self.port == '443' else 'http://'
 		self.component_root = global_settings.get('component_root', '/')
 		self.web_root = global_settings.get('web_root', '/var/www/html/')
 		self._win = None
@@ -132,7 +133,7 @@ class MxunitCommand(BaseCommand):
 		_web_root = self.canonize(self.web_root)
 		_test_cfc = _current_file.replace(_web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
+		_url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit)
 
 	def canonize(self,path):
@@ -150,7 +151,7 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
 		print 'Test: %s' % _test_cfc
-		_url = 'http://' + self.server + ':' + self.port + self.component_root  + _test_cfc +'?method=runtestremote&output=json'
+		_url = self.protocol + self.server + ':' + self.port + self.component_root  + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit,show_failures_only=True)
 
 
@@ -187,7 +188,7 @@ class SingleTestCommand(BaseCommand):
 		if test_method == '' : 
 			sublime.error_message ('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
 			return
-		_url = 'http://' + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
+		_url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json&testmethod=' + test_method
 		self.run_test(_url, edit)
 
 
