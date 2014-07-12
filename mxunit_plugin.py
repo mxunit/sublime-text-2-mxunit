@@ -4,12 +4,10 @@ MXUnit, who will return a TestResult (JSON or Text). The plugin should then
 display the results in s Sublime way.
 """
  
-import os
 import json
 import datetime
 import re
-import pprint
-from urllib2 import urlopen,HTTPError
+from urllib.request import urlopen,HTTPError
 import sublime_plugin
 import sublime
 
@@ -43,7 +41,6 @@ class BaseCommand(sublime_plugin.TextCommand):
 	
 	def show_qp(self):
 		""" Playing with quick panel. Losts of opportunities here! (Run test history, etc.) """
-		panel_items = []
 		self.view.window().show_quick_panel(self.test_items.keys(), self.on_done)	
 	
 
@@ -51,7 +48,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 		""" Playing with quick panel events. Does nothing useful."""
 		keys = self.test_items.keys()
 		key = keys[selected_item]
-		print  self.test_items[ key ]
+		print(self.test_items[key])
 	
 
 	def run_test(self, url, edit, show_failures_only=False):
@@ -68,10 +65,10 @@ class BaseCommand(sublime_plugin.TextCommand):
 			self.output_view.insert( edit, self.output_view.size(), pretty_results(self._results, show_failures_only) ) 
 			self.save_test_run(url,show_failures_only)
 
-		except HTTPError , e:
+		except HTTPError as e:
 			sublime.error_message ('\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nCheck syntax, too.\n\nTarget: %s' % (e,url) )
 		
-		except Exception , e:
+		except Exception as e:
 			sublime.error_message ('\nAh Snap, Scoob. Like something went way South!\n\n%s\n\nTarget: %s' % (e,url) )
 
 	
@@ -82,11 +79,11 @@ class BaseCommand(sublime_plugin.TextCommand):
 
 		To Do:  Save it as a stack with a MAX num. Stack can be displayed with the quick panel.
 		"""
-		print 'Saving url: %s' % url
+		print('Saving url: %s' % url)
 		self.last_run_settings.set("last_test_run", url)
 		self.last_run_settings.set("show_failures_only", show_failures_only)
 		sublime.save_settings("mxunit-last-run.sublime-settings")
-		print self.last_run_settings.get('last_test_run')
+		print(self.last_run_settings.get('last_test_run'))
 
 
 
@@ -132,7 +129,7 @@ class MxunitCommand(BaseCommand):
 		_current_file = self.canonize( _view.file_name() )
 		_web_root = self.canonize(self.web_root)
 		_test_cfc = _current_file.replace(_web_root, '')
-		print 'Test: %s' % _test_cfc
+		print('Test: %s' % _test_cfc)
 		_url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit)
 
@@ -150,7 +147,7 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 		_current_file = _view.file_name()
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
-		print 'Test: %s' % _test_cfc
+		print('Test: %s' % _test_cfc)
 		_url = self.protocol + self.server + ':' + self.port + self.component_root  + _test_cfc +'?method=runtestremote&output=json'
 		self.run_test(_url, edit,show_failures_only=True)
 
@@ -184,7 +181,7 @@ class SingleTestCommand(BaseCommand):
 		_current_file = _view.file_name()
 		#test
 		_test_cfc = _current_file.replace(self.web_root, '')
-		print 'Test: %s - %s' %  (_test_cfc, test_method,)
+		print('Test: %s - %s' %  (_test_cfc, test_method,))
 		if test_method == '' : 
 			sublime.error_message ('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
 			return
@@ -233,7 +230,7 @@ def pretty_results(test_results, show_failures_only):
 			_debug = test['DEBUG']
 			i=0
 			for var in _debug:
-				print '%s = %s' % ( var, _debug[i] )
+				print('%s = %s' % ( var, _debug[i] ))
 				if 'var' in var:
 					var_val = var['var']
 				elif 'VAR' in var:
@@ -260,7 +257,7 @@ def pretty_results(test_results, show_failures_only):
 
 def pretty_print_stacktrace(data):
 	results = ''
-	print len(data[0])
+	print(len(data[0]))
 	for e in data:
 		results += '\t\t\t%s.%s\t%s - %s \n' % (e['ClassName'],e['MethodName'],e['FileName'],e['LineNumber'])
 	# return data
