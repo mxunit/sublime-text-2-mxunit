@@ -1,7 +1,7 @@
 """
-This should take the current file (or selected from navigator) and pass it to
-MXUnit, who will return a TestResult (JSON or Text). The plugin should then
-display the results in s Sublime way.
+This should take the current file (or selected from navigator) and pass it to MXUnit, who will return a TestResult (JSON or Text).
+
+The plugin should then display the results in s Sublime way.
 """
  
 import json
@@ -14,14 +14,11 @@ import sublime
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class BaseCommand(sublime_plugin.TextCommand):
-	"""
-	Main Command implemented by child commands.
-	"""
+	
+	"""Main Command implemented by child commands."""
 
 	def __init__(self, view):
-		"""
-		Initializing instance members.
-		"""
+		"""Initializing instance members."""
 		global_settings = sublime.load_settings("mxunit.settings")
 		self.last_run_settings = sublime.load_settings("mxunit-last-run.sublime-settings")
 		self.view = view
@@ -40,7 +37,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 	
 	
 	def show_qp(self):
-		""" Playing with quick panel. Losts of opportunities here! (Run test history, etc.) """
+		""" Playing with quick panel. Losts of opportunities here! (Run test history, etc.). """
 		self.view.window().show_quick_panel(self.test_items.keys(), self.on_done)	
 	
 
@@ -52,10 +49,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 	
 
 	def run_test(self, url, edit, show_failures_only=False):
-		"""
-		Main test runner. Intended to be called from child command. 
-		"""
-		
+		""" Main test runner. Intended to be called  from child command."""
 		try:
 			_res = urlopen(url)
 			self._win = self.view.window()
@@ -75,7 +69,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 	
 	def save_test_run(self, url, show_failures_only):
 		"""
-		Persists the last run test. 
+		Persist the last run test.
 
 		To Do:  Save it as a stack with a MAX num. Stack can be displayed with the quick panel.
 		"""
@@ -88,14 +82,17 @@ class BaseCommand(sublime_plugin.TextCommand):
 
 
 class ShowQpCommand(BaseCommand):
+
 	""" 
-	Just playing with the quick panel. Does nothing except confuse the user. 
+	Just playing with the quick panel. Does nothing except confuse the user.
 
 	To Do: 
 		(1)  Could show a history of test runs and run the selected history item.
 		(2)  Could display a list of valid tests in current file and run the selected one.
- 	"""
+	"""
+
 	def run(self,edit):
+		""" Run. """
 		self.show_qp()	
 
 
@@ -103,28 +100,31 @@ class ShowQpCommand(BaseCommand):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class HideTestPanelCommand(BaseCommand):
-	""" 
-	Hide the test results panel (esc works fine, but whatever...)
- 	"""
+	
+	""" Hide the test results panel (esc works fine, but whatever...)."""
+	
 	def run(self,edit):
+		""" Run. """
 		self.view.window().run_command("hide_panel", {"panel": "output.tests"})	
 
 
 class ShowTestPanelCommand(BaseCommand):
-	""" 
-	Shows the test results panel
- 	"""
+	
+	""" Shows the test results panel. """
+	
 	def run(self,edit):
+		""" Run. """
 		self.view.window().run_command("show_panel", {"panel": "output.tests"})			
 
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class MxunitCommand(BaseCommand):
-	"""
-	Runs all tests in an MXUnit testcase.
-	"""
+	
+	""" Runs all tests in an MXUnit testcase."""
+	
 	def run(self,edit):
+		""" Run. """
 		_view = self.view
 		_current_file = self.canonize( _view.file_name() )
 		_web_root = self.canonize(self.web_root)
@@ -134,15 +134,17 @@ class MxunitCommand(BaseCommand):
 		self.run_test(_url, edit)
 
 	def canonize(self,path):
+		""" Canonize. """
 		return path.replace('\\','/')
 		
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class RunAllFailuresOnlyCommand(BaseCommand):
-	"""
-	Runs all tests in an MXUnit testcase but display only failures.
-	"""
+	
+	""" Runs all tests in an MXUnit testcase but display only failures. """
+	
 	def run(self,edit):
+		""" Run. """
 		_view = self.view
 		_current_file = _view.file_name()
 		#test
@@ -155,10 +157,11 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class RunLastTestCommand(BaseCommand):
-	"""
-	Looks up the last run test and simly runs it.
-	"""
+	
+	""" Looks up the last run test and simly runs it. """
+	
 	def run(self,edit):
+		""" Run. """
 		_url = self.last_run_settings.get("last_test_run")
 		_show_failures = self.last_run_settings.get("show_failures_only")
 		self.run_test(_url, edit,_show_failures)
@@ -167,11 +170,16 @@ class RunLastTestCommand(BaseCommand):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class SingleTestCommand(BaseCommand):
+	
 	"""
-	Runs a single MXUnit test.  Expect that user has placed cursor on line where test
-	exists.  We parse the line, extracting the test name and pass that to MXUnit.
+	Runs a single MXUnit test.
+
+	Expect that user has placed cursor on line where test exists.
+	We parse the line, extracting the test name and pass that to MXUnit.
 	"""
+	
 	def run(self,edit):
+		""" Run. """
 		_view = self.view
 		for region in _view.sel():
 			line = _view.line(region)
@@ -201,11 +209,10 @@ class SingleTestCommand(BaseCommand):
 
 def pretty_results(test_results, show_failures_only):
 	"""
-	Format JSON to string output.  
+	Format JSON to string output.
 
 	(To Do: use Python template and JSON as context)
 	"""
-
 	_results =  '__________________________________________________________________________________\n\n'
 	_results += '		:::::::   MXUnit Test Results  :::::::     \n'
 	tests = json.loads(test_results)
@@ -256,6 +263,7 @@ def pretty_results(test_results, show_failures_only):
 
 
 def pretty_print_stacktrace(data):
+	""" Pretty print the stacktrace. """
 	results = ''
 	print(len(data[0]))
 	for e in data:
@@ -266,9 +274,7 @@ def pretty_print_stacktrace(data):
 
 
 def parse_line(line):
-	"""
-	From a line of text gets the function name.
-	"""
+	""" From a line of text gets the function name. """
 	pattern = re.compile("""
 		[ \t]*
 		(private|package|remote|public)*[ ]*
