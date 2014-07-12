@@ -7,7 +7,10 @@ The plugin should then display the results in s Sublime way.
 import json
 import datetime
 import re
-from urllib.request import urlopen,HTTPError
+try:
+	from urllib.request import urlopen,HTTPError
+except ImportError:
+	from urllib2 import urlopen,HTTPError
 import sublime_plugin
 import sublime
 
