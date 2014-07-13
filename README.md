@@ -1,7 +1,7 @@
-# MXUnit Test Runner Plugin for [Sublime Text 2](http://www.sublimetext.com/)
+# MXUnit Test Runner Plugin for [Sublime Text](http://www.sublimetext.com/)
 
 ## Description
-A plugin for Sublime Text 2 that runs MXUnit tests - http://mxunit.org.
+A plugin for Sublime Text that runs MXUnit tests - http://mxunit.org.
 
 
 ### News
@@ -46,15 +46,15 @@ __Or (Using mouse clicks)__
 
 1. Clone this repository to one of the following directories:
 
- 	- Mac: ~/Library/Application Support/Sublime Text 2/Packages/
- 	- Windows: %APPDATA%/Sublime Text 2/Packages/
- 	- Linux: ~/.config/sublime-text-2/Packages/
+ 	- Mac: ~/Library/Application Support/Sublime Text {Version}/Packages/
+ 	- Windows: %APPDATA%/Sublime Text {Version}/Packages/
+ 	- Linux: ~/.config/sublime-text-{Version}/Packages/
 
 	E.g,: 
 
 	```bash
-	$ cd ~/.config/sublime-text-2/Packages/
-	$ git clone git://github.com/mxunit/sublime-text-2-mxunit.git
+	$ cd ~/.config/sublime-text-{Version}/Packages/
+	$ git clone git://github.com/mxunit/sublime-text--mxunit.git
 
 	```
 2. Rename the cloned directory to ```MXUnit```
