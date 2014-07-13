@@ -31,9 +31,6 @@ install:
   - mkdir -p '~/.config/sublime-text-'$SUBLIME_TEXT_VERSION'/Packages/'
   - ln -s $PWD '~/.config/sublime-text-'$SUBLIME_TEXT_VERSION'/Packages/MXUnit'
 
-  # Test railo/MXUnit
-  - curl http://localhost:8888/mxunit/index.cfm
-
 before_script:
   # Generate a screen buffer to collect Sublime Text window
   - export DISPLAY=:99.0
