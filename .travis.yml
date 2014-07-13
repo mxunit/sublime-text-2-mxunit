@@ -15,9 +15,8 @@ before_install:
 
   # Install hacked MXUnit
   - wget https://github.com/marcins/mxunit/archive/v2.1.3.tar.gz
-  - mkdir railo-express-4.2.1.000-nojre/webapps/ROOT/mxunit
-  - tar -xvf v2.1.3.tar.gz -C railo-express-4.2.1.000-nojre/webapps/ROOT/mxunit --strip-components 1
-
+  - tar -xvf v2.1.3.tar.gz
+  - mv mxunit-2.1.3 railo-express-4.2.1.000-nojre/webapps/ROOT/mxunit
 install:
   # Install Sublime Text and output version
   - curl https://raw.githubusercontent.com/twolfson/sublime-installer/0.1.3/install.sh | sh -s $SUBLIME_TEXT_VERSION
