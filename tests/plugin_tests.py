@@ -25,7 +25,8 @@ class MXUnitTest(unittest.TestCase):
 		
 	
 	def test_read_json_show_failures_only(self):
-		test_results_raw=open('test_results_fixture.json')
+		fn = os.path.join(os.path.dirname(__file__), 'test_results_fixture.json')
+		test_results_raw=open(fn)
 		tests = json.load( test_results_raw )
 		# pprint(tests)
 		failed =  [ test for test in tests if test['TESTSTATUS']=='Failed' ] 
