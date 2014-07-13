@@ -11,6 +11,12 @@ install:
   - curl https://raw.githubusercontent.com/twolfson/sublime-installer/0.1.3/install.sh | sh -s $SUBLIME_TEXT_VERSION
   - subl --version
 
+  # Install Railo
+   - wget http://cfml-ci.s3.amazonaws.com/railo-express-4.2.1.000-nojre.tar.gz
+   - tar -xvf railo-express-4.2.1.000-nojre.tar.gz
+   - cd railo-express-4.2.1.000-nojre
+   - ./start.sh
+
   # Install dev dependencies
   - pip install sublime-plugin-tests
   - pip install flake8
@@ -30,7 +36,7 @@ before_script:
 
 # command to run tests
 script:
-  - flake8 *.py --max-line-length=120
+  - flake8 *.py --max-line-length=120 --ignore="W191"
   - pep257 *.py
 
   # Run our tests
