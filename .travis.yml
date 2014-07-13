@@ -15,7 +15,8 @@ before_install:
 
   # Install hacked MXUnit
   - wget https://github.com/marcins/mxunit/archive/v2.1.3.tar.gz
-  - tar -xvf v2.1.3.tar.gz -C railo-express-4.2.1.000-nojre/webapps/ROOT/
+  - mkdir railo-express-4.2.1.000-nojre/webapps/ROOT/mxunit
+  - tar -xvf v2.1.3.tar.gz -C railo-express-4.2.1.000-nojre/webapps/ROOT/mxunit --strip-components 1
 
 install:
   # Install Sublime Text and output version
@@ -32,8 +33,8 @@ install:
   - ln -s $PWD '~/.config/sublime-text-'$SUBLIME_TEXT_VERSION'/Packages/MXUnit'
 
   # Test railo/MXUnit
-  - curl http://localhost:8888/mxunit-2.1.3/index.cfm
-  
+  - curl http://localhost:8888/mxunit/index.cfm
+
 before_script:
   # Generate a screen buffer to collect Sublime Text window
   - export DISPLAY=:99.0
