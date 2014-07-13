@@ -76,7 +76,8 @@ class BaseCommand(sublime_plugin.TextCommand):
 
         except HTTPError as e:
             sublime.error_message(
-                '\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nCheck syntax, too.\n\nTarget: %s' % (e, url)
+                '\nRuh roh, Raggy. Are you sure this is a valid MXUnit test?\n\n%s\n\nCheck syntax, too.\n\nTarget: %s'
+                % (e, url)
             )
 
         except Exception as e:
@@ -129,7 +130,7 @@ class ShowTestPanelCommand(BaseCommand):
 
     def run(self, edit):
         """ Run. """
-        self.view.window().run_command("show_panel", {"panel": "output.tests"})         
+        self.view.window().run_command("show_panel", {"panel": "output.tests"})
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +145,9 @@ class MxunitCommand(BaseCommand):
         _web_root = self.canonize(self.web_root)
         _test_cfc = _current_file.replace(_web_root, '')
         print('Test: %s' % _test_cfc)
-        _url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc + '?method=runtestremote&output=json'
+        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url += _test_cfc
+        _url += '?method=runtestremote&output=json'
         self.run_test(_url, edit)
 
     def canonize(self, path):
@@ -164,7 +167,9 @@ class RunAllFailuresOnlyCommand(BaseCommand):
         # test
         _test_cfc = _current_file.replace(self.web_root, '')
         print('Test: %s' % _test_cfc)
-        _url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc +'?method=runtestremote&output=json'
+        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url += _test_cfc
+        _url += '?method=runtestremote&output=json'
         self.run_test(_url, edit, show_failures_only=True)
 
 
@@ -205,7 +210,9 @@ class SingleTestCommand(BaseCommand):
         if test_method == '':
             sublime.error_message('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
             return
-        _url = self.protocol + self.server + ':' + self.port + self.component_root + _test_cfc + '?method=runtestremote&output=json&testmethod=' + test_method
+        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url += _test_cfc
+        _url += '?method=runtestremote&output=json&testmethod=' + test_method
         self.run_test(_url, edit)
 
 
@@ -253,7 +260,7 @@ def pretty_results(test_results, show_failures_only):
                 else:
                     var_val = None
 
-                if var_val is not  None:
+                if var_val is not None:
                     _results += "       Debug:  %s \n " % var_val
 
         if(test['TESTSTATUS'] in ('Failed', 'Error')):
