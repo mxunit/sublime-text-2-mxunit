@@ -27,6 +27,7 @@ class BaseCommand(sublime_plugin.TextCommand):
         self.last_run_settings = sublime.load_settings(
             "mxunit-last-run.sublime-settings"
         )
+
         self.view = view
         self.output_view = None
         # grab the runner config items
@@ -145,7 +146,11 @@ class MxunitCommand(BaseCommand):
         _web_root = self.canonize(self.web_root)
         _test_cfc = _current_file.replace(_web_root, '')
         print('Test: %s' % _test_cfc)
-        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url = get_seting_w_project_override('protocol', self.protocol)
+        _url += get_seting_w_project_override('server', self.server)
+        _url += ':'
+        _url += get_seting_w_project_override('port', self.port)
+        _url += get_seting_w_project_override('component_root', self.component_root)
         _url += _test_cfc
         _url += '?method=runtestremote&output=json'
         self.run_test(_url, edit)
@@ -167,7 +172,11 @@ class RunAllFailuresOnlyCommand(BaseCommand):
         # test
         _test_cfc = _current_file.replace(self.web_root, '')
         print('Test: %s' % _test_cfc)
-        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url = get_seting_w_project_override('protocol', self.protocol)
+        _url += get_seting_w_project_override('server', self.server)
+        _url += ':'
+        _url += get_seting_w_project_override('port', self.port)
+        _url += get_seting_w_project_override('component_root', self.component_root)
         _url += _test_cfc
         _url += '?method=runtestremote&output=json'
         self.run_test(_url, edit, show_failures_only=True)
@@ -210,7 +219,11 @@ class SingleTestCommand(BaseCommand):
         if test_method == '':
             sublime.error_message('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
             return
-        _url = self.protocol + self.server + ':' + self.port + self.component_root
+        _url = get_seting_w_project_override('protocol', self.protocol)
+        _url += get_seting_w_project_override('server', self.server)
+        _url += ':'
+        _url += get_seting_w_project_override('port', self.port)
+        _url += get_seting_w_project_override('component_root', self.component_root)
         _url += _test_cfc
         _url += '?method=runtestremote&output=json&testmethod=' + test_method
         self.run_test(_url, edit)
@@ -299,3 +312,13 @@ def parse_line(line):
     # return the 5th gouped regex, which should be the function name
     ret_val = m.group(4) if m else ''
     return ret_val
+
+
+def get_seting_w_project_override(name, default):
+    """ settings. """
+    project_settings = sublime.active_window().active_view().settings().get('MXUnit')
+    if project_settings is not None:
+        setting = project_settings.get(name, default)
+    else:
+        setting = default
+    return setting
