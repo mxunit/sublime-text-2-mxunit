@@ -11,7 +11,8 @@ before_install:
   # Install Railo
   - wget http://cfml-ci.s3.amazonaws.com/railo-express-4.2.1.000-nojre.tar.gz
   - tar -xvf railo-express-4.2.1.000-nojre.tar.gz
-  - railo-express-4.2.1.000-nojre/start.sh
+  - ls -l
+  - sudo railo-express-4.2.1.000-nojre/start.sh
 
 install:
   # Install Sublime Text and output version
