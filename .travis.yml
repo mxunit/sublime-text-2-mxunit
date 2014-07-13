@@ -12,10 +12,10 @@ install:
   - subl --version
 
   # Install Railo
-   - wget http://cfml-ci.s3.amazonaws.com/railo-express-4.2.1.000-nojre.tar.gz
-   - tar -xvf railo-express-4.2.1.000-nojre.tar.gz
-   - cd railo-express-4.2.1.000-nojre
-   - ./start.sh
+  # - wget http://cfml-ci.s3.amazonaws.com/railo-express-4.2.1.000-nojre.tar.gz
+  # - tar -xvf railo-express-4.2.1.000-nojre.tar.gz
+  # - cd railo-express-4.2.1.000-nojre
+  # - ./start.sh
 
   # Install dev dependencies
   - pip install sublime-plugin-tests
