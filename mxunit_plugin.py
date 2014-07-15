@@ -143,14 +143,14 @@ class MxunitCommand(BaseCommand):
 		""" Run. """
 		_view = self.view
 		_current_file = self.canonize(_view.file_name())
-		_web_root = self.canonize(self.web_root)
+		_web_root = self.canonize(get_setting_w_project_override('web_root', self.web_root))
 		_test_cfc = _current_file.replace(_web_root, '')
 		print('Test: %s' % _test_cfc)
-		_url = get_seting_w_project_override('protocol', self.protocol)
-		_url += get_seting_w_project_override('server', self.server)
+		_url = get_setting_w_project_override('protocol', self.protocol)
+		_url += get_setting_w_project_override('server', self.server)
 		_url += ':'
-		_url += get_seting_w_project_override('port', self.port)
-		_url += get_seting_w_project_override('component_root', self.component_root)
+		_url += get_setting_w_project_override('port', self.port)
+		_url += get_setting_w_project_override('component_root', self.component_root)
 		_url += _test_cfc
 		_url += '?method=runtestremote&output=json'
 		self.run_test(_url, edit)
@@ -170,13 +170,13 @@ class RunAllFailuresOnlyCommand(BaseCommand):
 		_view = self.view
 		_current_file = _view.file_name()
 		# test
-		_test_cfc = _current_file.replace(self.web_root, '')
+		_test_cfc = _current_file.replace(get_setting_w_project_override('web_root', self.web_root), '')
 		print('Test: %s' % _test_cfc)
-		_url = get_seting_w_project_override('protocol', self.protocol)
-		_url += get_seting_w_project_override('server', self.server)
+		_url = get_setting_w_project_override('protocol', self.protocol)
+		_url += get_setting_w_project_override('server', self.server)
 		_url += ':'
-		_url += get_seting_w_project_override('port', self.port)
-		_url += get_seting_w_project_override('component_root', self.component_root)
+		_url += get_setting_w_project_override('port', self.port)
+		_url += get_setting_w_project_override('component_root', self.component_root)
 		_url += _test_cfc
 		_url += '?method=runtestremote&output=json'
 		self.run_test(_url, edit, show_failures_only=True)
@@ -214,16 +214,16 @@ class SingleTestCommand(BaseCommand):
 
 		_current_file = _view.file_name()
 		# test
-		_test_cfc = _current_file.replace(self.web_root, '')
+		_test_cfc = _current_file.replace(get_setting_w_project_override('web_root', self.web_root), '')
 		print('Test: %s - %s' % (_test_cfc, test_method,))
 		if test_method == '':
 			sublime.error_message('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
 			return
-		_url = get_seting_w_project_override('protocol', self.protocol)
-		_url += get_seting_w_project_override('server', self.server)
+		_url = get_setting_w_project_override('protocol', self.protocol)
+		_url += get_setting_w_project_override('server', self.server)
 		_url += ':'
-		_url += get_seting_w_project_override('port', self.port)
-		_url += get_seting_w_project_override('component_root', self.component_root)
+		_url += get_setting_w_project_override('port', self.port)
+		_url += get_setting_w_project_override('component_root', self.component_root)
 		_url += _test_cfc
 		_url += '?method=runtestremote&output=json&testmethod=' + test_method
 		self.run_test(_url, edit)
@@ -314,7 +314,7 @@ def parse_line(line):
 	return ret_val
 
 
-def get_seting_w_project_override(name, default):
+def get_setting_w_project_override(name, default):
 	""" settings. """
 	project_settings = sublime.active_window().active_view().settings().get('MXUnit')
 	if project_settings is not None:
