@@ -1,7 +1,9 @@
 # MXUnit Test Runner Plugin for [Sublime Text 2](http://www.sublimetext.com/)
 
 ## Description
-A plugin for Sublime Text 2 that runs MXUnit tests - http://mxunit.org.
+A plugin for Sublime Text 2 & 3 that runs MXUnit tests - http://mxunit.org.
+
+[![Build Status](https://travis-ci.org/mxunit/sublime-text-2-mxunit.svg?branch=master)](https://travis-ci.org/mxunit/sublime-text-2-mxunit)
 
 
 ### News
