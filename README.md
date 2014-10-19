@@ -1,4 +1,4 @@
-# MXUnit Test Runner Plugin for [Sublime Text 2](http://www.sublimetext.com/)
+# MXUnit Test Runner Plugin for [Sublime Text](http://www.sublimetext.com/)
 
 ## Description
 A plugin for Sublime Text 2 & 3 that runs MXUnit tests - http://mxunit.org.
