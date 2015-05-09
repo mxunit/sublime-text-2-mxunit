@@ -215,6 +215,7 @@ class SingleTestCommand(BaseCommand):
 		_current_file = _view.file_name()
 		# test
 		_test_cfc = _current_file.replace(get_setting_w_project_override('web_root', self.web_root), '')
+		_test_cfc = _test_cfc.replace('\\', '/')
 		print('Test: %s - %s' % (_test_cfc, test_method,))
 		if test_method == '':
 			sublime.error_message('\nRuh roh, Raggy. The line the cursor is on doesn\'t look like a test.\n\n')
@@ -243,7 +244,7 @@ def pretty_results(test_results, show_failures_only):
 	"""
 	_results = '__________________________________________________________________________________\n\n'
 	_results += '       :::::::   MXUnit Test Results  :::::::     \n'
-	tests = json.loads(test_results)
+	tests = json.loads(test_results.decode())
 
 	passed = len([x for x in tests if x['TESTSTATUS'] == 'Passed'])
 	failed = len([x for x in tests if x['TESTSTATUS'] == 'Failed'])
